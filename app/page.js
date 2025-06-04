@@ -1,61 +1,42 @@
-"use client";
-import Link from "next/link";
-import { useState , useEffect} from "react";
-import Hero from "@/Components/Hero";
-import ProfileCard from "@/Components/ProfileCard";
-import Practice from "@/Components/Practice";
-import Footer from "@/Components/Footer";
-import Props from "@/Components/Props";
+  "use client"
 
-const Page = () => {
-const [user, setuser] = useState("I Passed throug props")
-  return (
-    <>
-      {/* <Header user={user}/> */}
-      <Hero/>
-      <div className="flex flex-col md:flex-row justify-center gap-6 p-10">
-        <ProfileCard
-          avatar="https://i.pravatar.cc/150?img=3"
-          title="CEO"
-          name="Anas"
-          age="30"
-          occupation="Software Engineer"
-        />
-        <ProfileCard
-          avatar="https://i.pravatar.cc/150?img=47"
-          title="CEO"
-          name="Sara"
-          age="30"
-          occupation="Software Engineer"
-        />
-        <ProfileCard
-          avatar="https://i.pravatar.cc/150?img=8"
-          title="CEO"
-          name="Smith"
-          age="30"
-          occupation="Software Engineer"
-        />
-         <ProfileCard
-          avatar="https://i.pravatar.cc/150?img=8"
-          title="CEO"
-          name="Smith"
-          age="30"
-          occupation="Software Engineer"
-        />
+  import axios from 'axios'
+  import React,{useState} from 'react'
 
-      </div>
+  const page = () => {
+    const [images, setimages] = useState([''])
+    const getImages = async()=>{
+  try {
+    const response = await axios.get("https://picsum.photos/v2/list");
+    const data = response.data;
+    console.log(images);
+    setimages(data);
+      } catch (error) {
+        console.error("Error to fetch data");
+        
+      }
+    }
+    return (
+      <>
+      <div>
+        <button onClick={getImages} className='px-10 py-10 bg-green-600 mt-50 ml-50 text-white'>Get images</button>
+        <div className='p-10'>
+          {images.map((elum,i)=>{
+           return <img
+          key={i}
+          src={elum.download_url}
+          width={300}
+          height={300}
+          className='m-10 rounded inline-block  '
            
-      <Practice/>
-      <Props/>
-       <Footer user={user}/>
-    </>
-    
-  );
-};
+           
+           />
+          })}
+        </div>
+      </div>
+      
+      </>
+    )
+  }
 
-export default Page;
-
-
-
-
-
+  export default page;
