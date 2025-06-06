@@ -1,44 +1,34 @@
 "use client"
-import axios from "axios"
-import React,{useState} from "react"
+import React,{useState} from 'react'
+import axios from 'axios'
 const Page = ()=>{
-const [images, setgetImages] = useState([''])
-const getImages = async()=>{
+const [images, setimages] = useState(['']);
+const getImages = async ()=>{
   try {
     const response = await axios.get("https://picsum.photos/v2/list");
     const data = response.data;
     console.log(data);
-    setgetImages(data);
-
+    setimages(data);
+    
   } catch (error) {
-    console.error("Error to fetch data");
-  }
-
-}
-
-
-
-
-
+    console.log("Error") 
+  }}
 
   return(
     <>
-    <button onClick={getImages} className='px-10 py-10 bg-green-600 mt-50 ml-50 text-white'>Images</button>
-    <div>
-      {images.map((elum,i)=>{
-        return <img
-        key={i}
-        src={elum.download_url}
-        width={400}
-        height={400}
-        className='m-10 rounded inline-block  '
-
-        
-        />
-      })}
-    </div>
+    <button onClick={getImages}> Images</button>
+    {images.map((elum,i)=>{
+      return
+      <img
+      key={i}
+      src={elum.download_url}
+      width={500}
+      height={600}
+      
+      />
+    })}
     </>
-
-  )
+    )
 }
+
 export default Page;
