@@ -1,36 +1,25 @@
 "use client"
-import React,{useState} from 'react'
-import axios from 'axios'
-const Page = ()=>{
-  const [images, setImages] = useState([''])
-  const getImages =  async ()=>{
-    try {
-      const response = await axios.get("https://picsum.photos/v2/list");
-      const data = response.data;
-      setImages(data);
-      console.log(data);
-      
-    } catch (error) {
-      console.log("Error")
-      
-    }
-  }
-  return(
-    <>
-    <button onClick={getImages}>Show Images</button>
-    <div>
-    {images.map((elum,i)=>{
-      return <img
-      key={i}
-      src={elum.download_url}
-      
-      
-      
-      />
-    })}
+import React, {useState}from 'react'
 
-    </div>
+const page = () => {
+  const [username, setusername] = useState("")
+  return (
+
+    <>
+    <h1 className='font-bold text-4xl mb-2.5'> Enter your name</h1>
+    <form>
+      <input 
+      type='text' 
+      value={username}
+      className='p-4 border-2 border-zinc-200'
+      onChange={(ab)=>{
+      setusername(ab.target.value);
+
+      }}
+      />
+    </form>
     </>
   )
 }
-export default Page;
+
+export default page
