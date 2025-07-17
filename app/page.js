@@ -1,15 +1,20 @@
+"use client"
+
+
 import React from 'react'
-import Student from "@/app/Student/page"
-// use path alias or relative path
-import { db } from "@/lib/firebase";
+import HomePage from '@/Components/HomePage'
 
 
 const page = () => {
   return (
 <>
-<Student/>
+
+<HomePage/>
+
+
 
 </>
+
   )
 }
 
