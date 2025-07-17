@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const Header = () => (
@@ -16,7 +17,9 @@ const Header = () => (
         <a href="#hero" className="text-gray-700 hover:text-blue-600">Home</a>
         <a href="#courses" className="text-gray-700 hover:text-blue-600">Courses</a>
         <a href="#contact" className="text-gray-700 hover:text-blue-600">Contact</a>
-        <a href="#contact" className="text-gray-700 hover:text-blue-600">Check Your Child Status</a>
+        <Link href="/StudentLookup" className="text-gray-700 hover:text-blue-600 font-bold">
+          Check Your Child Status
+        </Link>
       </nav>
     </div>
   </header>
@@ -62,6 +65,22 @@ const CoursesSection = () => (
     <div className="max-w-6xl mx-auto px-4 text-center">
       <h3 className="text-3xl font-bold text-gray-800 mb-10">Our Courses</h3>
       <div className="grid md:grid-cols-2 gap-8">
+        <motion.div
+          className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all"
+          whileHover={{ scale: 1.03 }}
+        >
+          <h4 className="text-2xl font-semibold mb-2 text-blue-600">Coaching Academy</h4>
+          <p className="text-gray-600">Tailored academic coaching for grades 1-10, focused on strong subject foundations and exam excellence.</p>
+        </motion.div>
+        <motion.div
+          className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all"
+          whileHover={{ scale: 1.03 }}
+        >
+          <h4 className="text-2xl font-semibold mb-2 text-blue-600">Home Schooling</h4>
+          <p className="text-gray-600">Personalized curriculum, flexible learning, and full parent-teacher support for home-based education.</p>
+        </motion.div>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 mt-10">
         <motion.div
           className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all"
           whileHover={{ scale: 1.03 }}
